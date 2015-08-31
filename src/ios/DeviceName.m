@@ -5,21 +5,16 @@
 
 @implementation DeviceName
 
-- (NSDictionary*)deviceProperties
+- (NSString*)deviceProperties
 {
     UIDevice* device = [UIDevice currentDevice];
-    NSMutableDictionary* devProps = [NSMutableDictionary dictionaryWithCapacity:4];
-
-    [devProps setObject:[device name] forKey:@"name"];
-
-    NSDictionary* devReturn = [NSDictionary dictionaryWithDictionary:devProps];
-    return devReturn;
+    return [device name];
 }
 
 - (void)getDeviceName:(CDVInvokedUrlCommand*)command
 {
-    NSDictionary* deviceProperties = [self deviceProperties];
-    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:deviceProperties];
+    NSString* devProperties = [self deviceProperties];
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:devProperties];
 
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }

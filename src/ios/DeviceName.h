@@ -4,7 +4,7 @@
 @interface DeviceName : CDVPlugin
 {}
 
-- (NSDictionary*)deviceProperties;
+- (NSString*)deviceProperties;
 - (void)getDeviceName:(CDVInvokedUrlCommand*)command;
 
 @end
